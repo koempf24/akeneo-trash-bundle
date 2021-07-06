@@ -1,0 +1,47 @@
+parameters:
+    koempf_trash.event_listener.remove.class: Koempf\TrashBundle\EventListener\RemoveListener
+
+    # Product
+    koempf_trash.entity.removed_product.class: Koempf\TrashBundle\Entity\RemovedProduct
+    koempf_trash.repository.removed_product.class: Koempf\TrashBundle\Repository\RemovedProductRepository
+
+    # Product Model
+    koempf_trash.entity.removed_product_model.class: Koempf\TrashBundle\Entity\RemovedProductModel
+    koempf_trash.repository.removed_product_model.class: Koempf\TrashBundle\Repository\RemovedProductModelRepository
+
+    # Category
+    koempf_trash.entity.removed_category.class: Koempf\TrashBundle\Entity\RemovedCategory
+    koempf_trash.repository.removed_category.class: Koempf\TrashBundle\Repository\RemovedCategoryRepository
+
+services:
+    koempf_trash.event_listener.remove:
+        class: '%koempf_trash.event_listener.remove.class%'
+        tags:
+            - { name: kernel.event_subscriber }
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@security.token_storage'
+            - '@pim_standard_format_serializer'
+            - '@pim_external_api_serializer'
+
+    # Repositories
+    koempf_trash.repository.removed_product:
+        class: '%koempf_trash.repository.removed_product.class%'
+        factory: 'doctrine.orm.entity_manager:getRepository'
+        arguments: ['%koempf_trash.entity.removed_product.class%']
+        tags:
+            - { name: 'pim_repository' }
+
+    koempf_trash.repository.removed_product_model:
+        class: '%koempf_trash.repository.removed_product_model.class%'
+        factory: 'doctrine.orm.entity_manager:getRepository'
+        arguments: ['%koempf_trash.entity.removed_product_model.class%']
+        tags:
+            - { name: 'pim_repository' }
+
+    koempf_trash.repository.removed_category:
+        class: '%koempf_trash.repository.removed_category.class%'
+        factory: 'doctrine.orm.entity_manager:getRepository'
+        arguments: ['%koempf_trash.entity.removed_category.class%']
+        tags:
+            - { name: 'pim_repository' }

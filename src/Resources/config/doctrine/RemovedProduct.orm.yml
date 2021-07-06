@@ -1,0 +1,50 @@
+Koempf\TrashBundle\Entity\RemovedProduct:
+    type: entity
+    table: koempf_trash_removed_product
+    repositoryClass: Koempf\TrashBundle\Repository\RemovedProductRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        productId:
+            type: integer
+            column: product_id
+        enabled:
+            type: boolean
+            column: is_enabled
+        identifier:
+            type: string
+            length: 255
+        rawValues:
+            type: json
+            column: raw_values
+        normalized:
+            type: json
+            column: normalized
+        familyId:
+            type: integer
+            column: family_id
+            nullable: true
+        productModelId:
+            type: integer
+            column: product_model_id
+            nullable: true
+        familyVariantId:
+            type: integer
+            column: family_variant_id
+            nullable: true
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+        deletedAt:
+            type: datetime
+            column: deleted_at
+        author:
+            type: string
+            length: 255
+            nullable: true

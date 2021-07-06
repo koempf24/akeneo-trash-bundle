@@ -1,0 +1,45 @@
+Koempf\TrashBundle\Entity\RemovedCategory:
+    type: entity
+    table: koempf_trash_removed_category
+    repositoryClass: Koempf\TrashBundle\Repository\RemovedCategoryRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        categoryId:
+            type: integer
+            column: category_id
+        parentId:
+            type: integer
+            column: parent_id
+            nullable: true
+        code:
+            type: string
+            length: 255
+        label:
+            type: string
+            length: 255
+            nullable: true
+        deletedAt:
+            type: datetime
+            column: deleted_at
+        author:
+            type: string
+            length: 255
+            nullable: true
+        root:
+            type: integer
+        level:
+            type: integer
+            column: lvl
+        left:
+            type: integer
+            column: lft
+        right:
+            type: integer
+            column: rgt
+        normalized:
+            type: json
+            column: normalized

@@ -1,0 +1,27 @@
+{
+    "name": "koempf/akeneo-trash-bundle",
+    "description": "Put products, models and categories into own trash tables before deleting them in the original tables.",
+    "keywords": [
+        "akeneo",
+        "trash",
+        "pim"
+    ],
+    "type": "library",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lars Malach",
+            "email": "lam@koempf24.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "akeneo/pim-community-dev": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Koempf\\TrashBundle\\": "src/"
+        }
+    }
+}
